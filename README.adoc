@@ -1,0 +1,11 @@
+= @cuioss/playwright-test-artifacts
+
+Playwright test artifact infrastructure — captures browser logs, network errors, and screenshots per test.
+
+== Status
+
+Under construction. Source code extraction from https://github.com/cuioss/nifi-extensions[nifi-extensions] is tracked in https://github.com/cuioss/nifi-extensions/issues/106[#106].
+
+== License
+
+Apache License 2.0

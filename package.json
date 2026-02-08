@@ -24,7 +24,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jsdoc": "^46.8.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-security": "^2.1.1",
+    "eslint-plugin-security": "^3.0.1",
     "eslint-plugin-sonarjs": "^0.25.1",
     "eslint-plugin-unicorn": "^52.0.0",
     "prettier": "^3.4.2"

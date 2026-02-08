@@ -1,5 +1,5 @@
 /**
- * @file Entry point for @cuioss/playwright-test-artifacts
+ * @file Entry point for `@cuioss/playwright-test-artifacts`
  * @description Playwright test artifact infrastructure - captures browser logs,
  * network errors, and screenshots per test.
  */

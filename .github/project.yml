@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/cuioss/cuioss-organization/main/.github/actions/read-project-config/schema.json
+name: playwright-test-artifacts
+description: Playwright test artifact infrastructure
+
+release:
+  current-version: 1.0.0
+  create-github-release: true
+
+npm-build:
+  node-version: '22'
+
+sonar:
+  project-key: cuioss_playwright-test-artifacts
+  enabled: true
+  skip-on-dependabot: true
+
+github-automation:
+  auto-merge-build-versions: true

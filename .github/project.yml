@@ -11,7 +11,7 @@ npm-build:
 
 sonar:
   project-key: cuioss_playwright-test-artifacts
-  enabled: true
+  enabled: false
   skip-on-dependabot: true
 
 github-automation:

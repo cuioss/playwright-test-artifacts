@@ -2,7 +2,8 @@
 name: Sonar Debug
 
 on:
-  workflow_dispatch:
+  push:
+    branches: ["chore/eslint-10-flat-config"]
 
 permissions:
   contents: read

@@ -92,6 +92,33 @@ Each test using the artifact fixture produces these files in `testInfo.outputDir
 | Full-page screenshot taken automatically during teardown.
 |===
 
+=== Output Directory
+
+All artifacts are written to Playwright's per-test `testInfo.outputDir`, which is derived from the `outputDir` setting in your `playwright.config.js`.
+Playwright's default is `test-results/` at your project root.
+
+[source,javascript]
+----
+// playwright.config.js — default (npm projects)
+import { defineConfig } from "@playwright/test";
+
+export default defineConfig({
+    outputDir: "test-results",
+});
+----
+
+For Maven-style projects that follow the `target/` convention:
+
+[source,javascript]
+----
+// playwright.config.js — Maven-style project
+import { defineConfig } from "@playwright/test";
+
+export default defineConfig({
+    outputDir: "target/test-results",
+});
+----
+
 === Advanced Usage
 
 ==== Custom logger instance

@@ -36,6 +36,11 @@
   "publishConfig": {
     "access": "public"
   },
+  "homepage": "https://github.com/cuioss/playwright-test-artifacts",
+  "bugs": {
+    "url": "https://github.com/cuioss/playwright-test-artifacts/issues"
+  },
+  "author": "cuioss",
   "repository": {
     "type": "git",
     "url": "https://github.com/cuioss/playwright-test-artifacts.git"

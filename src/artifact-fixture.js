@@ -3,7 +3,7 @@
  * @description Creates a reusable Playwright fixture that captures logs and screenshots per test.
  */
 
-import { mkdirSync } from "fs";
+import { mkdir } from "fs/promises";
 import { join } from "path";
 import { testLogger } from "./test-logger.js";
 
@@ -44,14 +44,19 @@ export function createArtifactFixture(options = {}) {
             await use(page);
 
             // Teardown
-            mkdirSync(testInfo.outputDir, { recursive: true });
+            await mkdir(testInfo.outputDir, { recursive: true });
             await page
                 .screenshot({
                     path: join(testInfo.outputDir, "end-tests.png"),
                     fullPage: true,
                 })
-                .catch(() => {});
-            logger.writeLogs(testInfo);
+                .catch((err) =>
+                    logger.warn(
+                        "artifact-fixture",
+                        `Failed to take end-of-test screenshot: ${err.message}`,
+                    ),
+                );
+            await logger.writeLogs(testInfo);
 
             if (afterUse) {
                 await afterUse(page, testInfo);

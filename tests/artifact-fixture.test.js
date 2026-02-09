@@ -15,8 +15,11 @@ function createMockLogger() {
         setupBrowserCapture(page) {
             calls.push({ method: "setupBrowserCapture", args: [page] });
         },
-        writeLogs(testInfo) {
+        async writeLogs(testInfo) {
             calls.push({ method: "writeLogs", args: [testInfo] });
+        },
+        warn(source, message) {
+            calls.push({ method: "warn", args: [source, message] });
         },
     };
 }
@@ -122,6 +125,12 @@ describe("createArtifactFixture", () => {
         // writeLogs should still be called
         const writeLogsCalls = logger.calls.filter((c) => c.method === "writeLogs");
         assert.equal(writeLogsCalls.length, 1);
+
+        // screenshot failure should be logged as a warning
+        const warnCalls = logger.calls.filter((c) => c.method === "warn");
+        assert.equal(warnCalls.length, 1);
+        assert.equal(warnCalls[0].args[0], "artifact-fixture");
+        assert.ok(warnCalls[0].args[1].includes("page closed"));
     });
 
     it("beforeUse callback is invoked with page and testInfo before use", async () => {

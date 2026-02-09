@@ -136,13 +136,16 @@ export const test = base.extend(createArtifactFixture({ logger: myLogger }));
 
 [source,javascript]
 ----
+import { test as base } from "@playwright/test";
+import {
+    createArtifactFixture,
+    takeStartScreenshot,
+} from "@cuioss/playwright-test-artifacts";
+
 export const test = base.extend(
     createArtifactFixture({
         async beforeUse(page, testInfo) {
-            // Runs after logger setup, before test body — e.g. take start screenshot
-            const { takeStartScreenshot } = await import(
-                "@cuioss/playwright-test-artifacts"
-            );
+            // Runs after logger setup, before test body
             await takeStartScreenshot(page, testInfo);
         },
         async afterUse(page, testInfo) {

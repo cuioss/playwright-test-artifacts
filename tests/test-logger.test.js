@@ -151,12 +151,12 @@ describe("TestLogger", () => {
         assert.equal(logger.getLogs().length, 0);
     });
 
-    it("writeLogs creates browser.log and test-run.log with correct format", () => {
+    it("writeLogs creates browser.log and test-run.log with correct format", async () => {
         logger.startTest("test-1");
         logger.log("browser", "info", "console message");
         logger.log("Auth", "info", "node message");
 
-        logger.writeLogs({ outputDir: tempDir });
+        await logger.writeLogs({ outputDir: tempDir });
 
         const browserLog = readFileSync(join(tempDir, "browser.log"), "utf-8");
         assert.ok(browserLog.includes("[info] console message"));
@@ -167,10 +167,10 @@ describe("TestLogger", () => {
         assert.ok(!testRunLog.includes("console message"));
     });
 
-    it("writeLogs clears logs after writing", () => {
+    it("writeLogs clears logs after writing", async () => {
         logger.startTest("test-1");
         logger.log("browser", "info", "msg");
-        logger.writeLogs({ outputDir: tempDir });
+        await logger.writeLogs({ outputDir: tempDir });
 
         assert.equal(logger.getLogs().length, 0);
     });

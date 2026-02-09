@@ -3,7 +3,7 @@
  * @description Takes a full-page screenshot at the start of a test.
  */
 
-import { mkdirSync } from "fs";
+import { mkdir } from "fs/promises";
 import { join } from "path";
 
 /**
@@ -12,7 +12,7 @@ import { join } from "path";
  * @param {import('@playwright/test').TestInfo} testInfo - Playwright testInfo object
  */
 export async function takeStartScreenshot(page, testInfo) {
-    mkdirSync(testInfo.outputDir, { recursive: true });
+    await mkdir(testInfo.outputDir, { recursive: true });
     await page.screenshot({
         path: join(testInfo.outputDir, "start-test.png"),
         fullPage: true,

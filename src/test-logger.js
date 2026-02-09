@@ -3,7 +3,7 @@
  * @description Captures browser and Node-side logs per test, persists as text files.
  */
 
-import { writeFileSync, mkdirSync } from "fs";
+import { mkdir, writeFile } from "fs/promises";
 import { join } from "path";
 
 /**
@@ -91,16 +91,16 @@ class TestLogger {
      * Write logs as separate text files: browser.log and test-run.log.
      * Clears internal log buffer after writing.
      * @param {import('@playwright/test').TestInfo} testInfo - Playwright testInfo object
+     * @returns {Promise<void>} resolves when logs are written
      */
-    writeLogs(testInfo) {
+    async writeLogs(testInfo) {
         const outputDir = testInfo.outputDir;
-        mkdirSync(outputDir, { recursive: true });
+        await mkdir(outputDir, { recursive: true });
 
         // browser.log — only browser-sourced entries
         const browserLines = this.#logs
             .filter((e) => e.source === "browser")
             .map((e) => `[${e.timestamp.substring(11, 23)}] [${e.level}] ${e.message}`);
-        writeFileSync(join(outputDir, "browser.log"), browserLines.join("\n") + "\n", "utf-8");
 
         // test-run.log — only Node-side utility entries
         const testRunLines = this.#logs
@@ -108,7 +108,11 @@ class TestLogger {
             .map(
                 (e) => `[${e.timestamp.substring(11, 23)}] [${e.source}] [${e.level}] ${e.message}`,
             );
-        writeFileSync(join(outputDir, "test-run.log"), testRunLines.join("\n") + "\n", "utf-8");
+
+        await Promise.all([
+            writeFile(join(outputDir, "browser.log"), browserLines.join("\n") + "\n", "utf-8"),
+            writeFile(join(outputDir, "test-run.log"), testRunLines.join("\n") + "\n", "utf-8"),
+        ]);
 
         this.#logs = [];
     }

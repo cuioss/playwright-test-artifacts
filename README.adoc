@@ -94,7 +94,22 @@ Each test using the artifact fixture produces these files in `testInfo.outputDir
 
 === Output Directory
 
-All artifacts are written to Playwright's per-test `testInfo.outputDir`, which is derived from the `outputDir` setting in your `playwright.config.js`.
+Playwright automatically creates a **separate subdirectory per test** inside `outputDir`, so each test's artifacts are isolated.
+The subdirectory name is derived from the test file and test title.
+
+----
+test-results/
+├── homepage-loads-chromium/
+│   ├── browser.log
+│   ├── test-run.log
+│   └── end-tests.png
+└── login-works-chromium/
+    ├── browser.log
+    ├── test-run.log
+    └── end-tests.png
+----
+
+The base `outputDir` is configured in your `playwright.config.js`.
 Playwright's default is `test-results/` at your project root.
 
 [source,javascript]

@@ -8,7 +8,7 @@
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=cuioss_playwright-test-artifacts&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=cuioss_playwright-test-artifacts)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=cuioss_playwright-test-artifacts&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=cuioss_playwright-test-artifacts)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=cuioss_playwright-test-artifacts&metric=coverage)](https://sonarcloud.io/summary/new_code?id=cuioss_playwright-test-artifacts)
+
 
 ## What is it?
 

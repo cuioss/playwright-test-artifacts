@@ -3,7 +3,7 @@ name: playwright-test-artifacts
 description: Playwright test artifact infrastructure
 
 release:
-  current-version: 1.0.0
+  current-version: 0.1.0
   create-github-release: true
 
 npm-build:

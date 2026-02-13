@@ -17,7 +17,7 @@ jobs:
       contents: write
       id-token: write
     if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
-    uses: cuioss/cuioss-organization/.github/workflows/reusable-npm-publish.yml@33b41491c6c05997b5b7270c2b3ceb32c47d3233 # main
+    uses: cuioss/cuioss-organization/.github/workflows/reusable-npm-publish.yml@3432f9e01cf089f24d3718468d28c5fbd9fe78d9 # v0.3.6 # main
     secrets:
       RELEASE_APP_ID: ${{ secrets.RELEASE_APP_ID }}
       RELEASE_APP_PRIVATE_KEY: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}

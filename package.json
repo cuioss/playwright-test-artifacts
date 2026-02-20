@@ -1,6 +1,6 @@
 {
   "name": "@cuioss/playwright-test-artifacts",
-  "version": "0.0.0",
+  "version": "0.1.1",
   "description": "Playwright test artifact infrastructure - captures browser logs, network errors, and screenshots per test",
   "type": "module",
   "exports": {

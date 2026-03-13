@@ -44,6 +44,7 @@ export function createArtifactFixture(options = {}) {
             await use(page);
 
             // Teardown
+            // eslint-disable-next-line security/detect-non-literal-fs-filename -- path from Playwright testInfo
             await mkdir(testInfo.outputDir, { recursive: true });
             await page
                 .screenshot({

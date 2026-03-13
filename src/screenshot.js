@@ -12,6 +12,7 @@ import { join } from "path";
  * @param {import('@playwright/test').TestInfo} testInfo - Playwright testInfo object
  */
 export async function takeStartScreenshot(page, testInfo) {
+    // eslint-disable-next-line security/detect-non-literal-fs-filename -- path from Playwright testInfo
     await mkdir(testInfo.outputDir, { recursive: true });
     await page.screenshot({
         path: join(testInfo.outputDir, "start-test.png"),

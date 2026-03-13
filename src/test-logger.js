@@ -95,6 +95,7 @@ class TestLogger {
      */
     async writeLogs(testInfo) {
         const outputDir = testInfo.outputDir;
+        // eslint-disable-next-line security/detect-non-literal-fs-filename -- path from Playwright testInfo
         await mkdir(outputDir, { recursive: true });
 
         // browser.log — only browser-sourced entries
@@ -110,7 +111,9 @@ class TestLogger {
             );
 
         await Promise.all([
+            // eslint-disable-next-line security/detect-non-literal-fs-filename -- path from Playwright testInfo
             writeFile(join(outputDir, "browser.log"), browserLines.join("\n") + "\n", "utf-8"),
+            // eslint-disable-next-line security/detect-non-literal-fs-filename -- path from Playwright testInfo
             writeFile(join(outputDir, "test-run.log"), testRunLines.join("\n") + "\n", "utf-8"),
         ]);
 

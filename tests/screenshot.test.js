@@ -26,7 +26,7 @@ describe("takeStartScreenshot", () => {
 
         await takeStartScreenshot(mockPage, { outputDir: tempDir });
 
-        assert.ok(existsSync(tempDir));
+        assert.ok(existsSync(tempDir)); // eslint-disable-line security/detect-non-literal-fs-filename -- test temp dir
         assert.deepEqual(capturedArgs, {
             path: join(tempDir, "start-test.png"),
             fullPage: true,

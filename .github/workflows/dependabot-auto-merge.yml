@@ -1,0 +1,14 @@
+name: Dependabot Auto-merge
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  auto-merge:
+    uses: cuioss/cuioss-organization/.github/workflows/reusable-dependabot-auto-merge.yml@2569924aa94ecef006ab4c96db06f43b051e5dbd # v0.6.5
+    permissions:
+      contents: write
+      pull-requests: write

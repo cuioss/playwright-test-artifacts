@@ -158,11 +158,11 @@ describe("TestLogger", () => {
 
         await logger.writeLogs({ outputDir: tempDir });
 
-        const browserLog = readFileSync(join(tempDir, "browser.log"), "utf-8");
+        const browserLog = readFileSync(join(tempDir, "browser.log"), "utf-8"); // eslint-disable-line security/detect-non-literal-fs-filename -- test temp dir
         assert.ok(browserLog.includes("[info] console message"));
         assert.ok(!browserLog.includes("node message"));
 
-        const testRunLog = readFileSync(join(tempDir, "test-run.log"), "utf-8");
+        const testRunLog = readFileSync(join(tempDir, "test-run.log"), "utf-8"); // eslint-disable-line security/detect-non-literal-fs-filename -- test temp dir
         assert.ok(testRunLog.includes("[Auth] [info] node message"));
         assert.ok(!testRunLog.includes("console message"));
     });

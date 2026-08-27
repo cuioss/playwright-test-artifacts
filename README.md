@@ -154,3 +154,8 @@ testLogger.error("MyHelper", "Login failed with status 401");
 ## License
 
 [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
+
+== Merge queue
+
+`main` is protected by the org-managed merge queue (`main-merge-queue`, squash, all-green).
+PRs are merged by enqueueing them; `build / conclusion` is the required check the queue gates on.

@@ -16,3 +16,8 @@ sonar:
 
 github-automation:
   auto-merge-build-versions: true
+
+cuioss-review-bot:
+  enabled: true
+  packs: [javascript]
+  additional_rules: []
